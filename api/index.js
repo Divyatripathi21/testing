@@ -18,6 +18,8 @@ server.listen(3001, () => {
   console.log("SERVER IS RUNNING");
 });
 
+
+
 io.on("connection", (socket) => {
   console.log("client1 connected");
 
@@ -28,10 +30,15 @@ io.on("connection", (socket) => {
   });
 });
 
+
+app.listen(3000, () => {
+  console.log("Server is running on port 3000!");
+});
+
 app.use("/api", (req, res, next) => {
   res.send("aur bhai");
 });
 
-app.use((req, res, next) => {
-  res.send("server connected and running");
-});
+// app.use((req, res, next) => {
+//   res.send("server connected and running");
+// });
