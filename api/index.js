@@ -1,35 +1,39 @@
 import express from "express";
 import http from "http";
 import { Server } from "socket.io";
-import cors from "cors";
 import path from 'path';
+import { createServer } from "http";
+import cors from 'cors';
 
-
+const app = express();
 
 
 const __dirname=path.resolve();
 
-const app = express();
-app.use(express.json());
 
-const server = http.createServer(app);
+
+
+const server = createServer(app);
+
+
+
+
 const io = new Server(server, {
   cors: {
-    origin: "https://testing-ftvh.onrender.com",
+    origin: "http://localhost:5173",
   },
 });
 
+app.use(cors(
+  {
+    origin: "http://localhost:5173",
+  }
+))
 
 
 
 
-server.listen(3001, () => {
-  console.log("SERVER IS RUNNING");
-});
-
-app.listen(3000, () => {
-  console.log("Server is running on port 3000!");
-});
+app.use(express.json());
 
 io.on("connection", (socket) => {
   console.log("client1 connected");
@@ -41,6 +45,17 @@ io.on("connection", (socket) => {
     console.log("Sent message to sendMessageToReceiverPost");
   });
 });
+
+
+
+
+
+
+server.listen(3000, () => {
+  console.log("Server is running on port 3000!");
+});
+
+
 
 
 
