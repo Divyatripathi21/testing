@@ -2,7 +2,12 @@ import express from "express";
 import http from "http";
 import { Server } from "socket.io";
 import cors from "cors";
+import path from 'path';
 
+
+
+
+const __dirname=path.resolve();
 
 const app = express();
 app.use(express.json());
@@ -44,8 +49,17 @@ app.use("/api",(req, res, next) => {
  res.send("aur bhai")
   });
 
-app.use((req, res, next) => {
- res.send("server conneted and running hiiiiiiiiiiiiiiii")
+  
+    
+  app.use(express.static(path.join(__dirname, '/client/dist')));
+  
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
   });
 
 
+
+  app.use((req, res, next) => {
+    res.send("server conneted and running hiiiiiiiiiiiiiiii")
+     });
+ 
