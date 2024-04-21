@@ -7,8 +7,11 @@ export default function Client1() {
     const socket = io.connect("https://testing-ftvh.onrender.com/");
     console.log("2");
     socket.on("connect", () => {
+      console.log("3");
       console.log("Connected to server");
+      console.log("4");
       socket.emit("receiverFormSubmitted", { message: "yes" });
+      console.log("5");
     });
   }
  
