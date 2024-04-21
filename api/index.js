@@ -21,6 +21,8 @@ const server = createServer(app);
 const io = new Server(server, {
   cors: {
     origin: "https://testing-ftvh.onrender.com",
+    methods:["GET","POST"],
+    credentials:true,
   },
 });
 
