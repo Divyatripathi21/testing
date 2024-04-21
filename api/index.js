@@ -62,9 +62,6 @@ server.listen(3000, () => {
 
 
 
-app.use("/api",(req, res, next) => {
- res.send("aur bhai")
-  });
 
   
     
