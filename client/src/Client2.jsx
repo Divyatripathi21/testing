@@ -3,7 +3,7 @@ import {io} from "socket.io-client";
 
 export default function Client2() {
   console.log("c2-1");
-  const socket = io.connect(" https://testing-ftvh.onrender.com/api");
+  const socket = io.connect("https://testing-ftvh.onrender.com/api");
   console.log("c2-2");
   socket.on("connect", () => {
     console.log("c2-3");
