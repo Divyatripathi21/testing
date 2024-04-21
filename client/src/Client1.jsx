@@ -1,5 +1,5 @@
 import React from 'react';
-import io from "socket.io-client";
+import {io} from "socket.io-client";
 
 export default function Client1() {
   const handleClient1 = () => {
