@@ -1,10 +1,8 @@
-import React from 'react'
+import React from 'react';
 import io from "socket.io-client";
 
-
-
 export default function Client2() {
-  const socket = io.connect("http://localhost:3001");
+  const socket = io.connect("https://testing-ftvh.onrender.com/");
 
   socket.on("connect", () => {
     console.log("Connected to server");
@@ -12,9 +10,11 @@ export default function Client2() {
 
   socket.on("sendMessageToClient2", (data) => {
     console.log("Received message from server:", data);
-    if(data==="yes")
-    console.log("success");
+    if (data === "yes") {
+      console.log("success");
+    }
   });
+
   socket.on("disconnect", () => {
     console.log("Disconnected from server");
   });
@@ -23,5 +23,5 @@ export default function Client2() {
     <div>
       client2
     </div>
-  )
+  );
 }
